@@ -2,7 +2,7 @@
 This project investigates the possibilities of small-scale real-time model training and serving. Initially only with a Streamlit front-end, but will later add FastAPI backend.
 
 # Virtual Environment
-```python3 -m venv ~/.realtime-trainig```\n
+```python3 -m venv ~/.realtime-trainig```  
 ```source ~/.realtime-training/bin/activate```
 
 # Building the project
