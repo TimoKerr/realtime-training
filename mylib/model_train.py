@@ -14,6 +14,7 @@ def train(data_path="data/penguins_size.csv", hyperOpt=bool, max_evals=5):
 
     df = util.read_data(data_path)
     df = util.clean_data(df)
+    df.to_csv("data/penguins_size_cleaned.csv", index=False)
     X, Y = util.create_xy(df)
 
     X_train, X_test, Y_train, Y_test = train_test_split(

@@ -31,7 +31,7 @@ def add(new_row):
     df = pd.read_csv("data/penguins_size.csv")
     df = clean_data(df)
 
-    df.append(
+    df = df.append(
         {
             df.columns[0]: new_row[0],
             df.columns[1]: new_row[1],
@@ -42,4 +42,4 @@ def add(new_row):
         ignore_index=True,
     )
 
-    df.to_csv("data/penguins_size_update.csv")
+    df.to_csv("data/penguins_size_update.csv", index=False)

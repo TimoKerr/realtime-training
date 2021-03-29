@@ -29,6 +29,7 @@ if mode_choice == "inference":
             [[culmen_length_mm, culmen_depth_mm, flipper_length_mm, body_mass_g]]
         )
         st.write(f"Predicted Penguin Species: {result[0]}")
+        # Plot
 else:
     st.header("Training")
     st.write(

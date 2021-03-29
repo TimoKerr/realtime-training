@@ -12,4 +12,22 @@ This project investigates the possibilities of small-scale real-time model train
 For training, the user can choose to either do hyperparameter optimization or not.
 - mylib contains the files for hyperparameter optimization, data cleaning, and model traning.
 - app.py and app_test.py will be used later to introduce the FastAPI backend.
-- model.ipynb is a play-notebook for rapid testing.
+- model.ipynb is a play-notebook for rapid testing.  
+  
+.
+├── app.py
+├── app_test.py
+├── classifier.pkl
+├── data
+│   ├── penguins_size.csv
+│   └── penguins_size_update.csv
+├── Makefile
+├── model.ipynb
+├── mylib
+│   ├── hyperoptimize.py
+│   ├── __init__.py
+│   ├── model_train.py
+│   └── util.py
+├── README.md
+├── requirements.txt
+└── streamlit-ui.py
