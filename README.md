@@ -1,3 +1,5 @@
+[![Python application test with Github Actions](https://github.com/TimoKerr/realtime-training/actions/workflows/main.yml/badge.svg)](https://github.com/TimoKerr/realtime-training/actions/workflows/main.yml)
+
 # Real Time Training
 This project investigates the possibilities of small-scale real-time model training and serving. Initially only with a Streamlit front-end, but will later add FastAPI backend.
 
