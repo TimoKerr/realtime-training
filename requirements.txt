@@ -1,0 +1,6 @@
+hyperopt
+scikit-optimize
+pylint
+numpy
+pandas
+streamlit
