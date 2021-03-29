@@ -4,3 +4,5 @@ pylint
 numpy
 pandas
 streamlit
+pytest
+pytest-cov

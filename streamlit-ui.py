@@ -1,6 +1,4 @@
 import streamlit as st
-import io
-import os
 import pickle
 
 from mylib import model_train
@@ -21,25 +19,25 @@ if mode_choice == "inference":
     st.write(
         "In this mode, you can input the four required characteristic input number to make a prediction on what species of penguin they come from."
     )
-    culmen_length_mm = st.number_input("culmen_length_mm")
-    culmen_depth_mm = st.number_input("culmen_depth_mm")
-    flipper_length_mm = st.number_input("flipper_length_mm")
-    body_mass_g = st.number_input("body_mass_g")
+    culmen_length_mm = st.number_input("culmen_length_mm", value=1)
+    culmen_depth_mm = st.number_input("culmen_depth_mm", value=1)
+    flipper_length_mm = st.number_input("flipper_length_mm", value=1)
+    body_mass_g = st.number_input("body_mass_g", value=1)
 
     if st.button("Inference"):
         result = classifier.predict(
             [[culmen_length_mm, culmen_depth_mm, flipper_length_mm, body_mass_g]]
         )
-        st.write(f"Predicted Penguin Species:{result}")
+        st.write(f"Predicted Penguin Species: {result[0]}")
 else:
     st.header("Training")
     st.write(
         "In this mode, you will be able to supply a new training data point, and retrain the model."
     )
-    culmen_length_mm = st.number_input("culmen_length_mm")
-    culmen_depth_mm = st.number_input("culmen_depth_mm")
-    flipper_length_mm = st.number_input("flipper_length_mm")
-    body_mass_g = st.number_input("body_mass_g")
+    culmen_length_mm = st.number_input("culmen_length_mm", value=1)
+    culmen_depth_mm = st.number_input("culmen_depth_mm", value=1)
+    flipper_length_mm = st.number_input("flipper_length_mm", value=1)
+    body_mass_g = st.number_input("body_mass_g", value=1)
     Species = st.selectbox("Species", ["adelie", "chinstrap", "gentoo"])
 
     st.sidebar.header("Training parameters")
