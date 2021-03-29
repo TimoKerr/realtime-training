@@ -10,6 +10,8 @@ from functools import partial
 # Hyperopt
 from hyperopt import hp, fmin, tpe, Trials
 from hyperopt.pyll.base import scope
+
+
 def test():
     works = "Module loaded."
     return works
