@@ -6,3 +6,4 @@ pandas
 streamlit
 pytest
 pytest-cov
+black
