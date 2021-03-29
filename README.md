@@ -14,7 +14,7 @@ For training, the user can choose to either do hyperparameter optimization or no
 - app.py and app_test.py will be used later to introduce the FastAPI backend.
 - model.ipynb is a play-notebook for rapid testing.  
   
-.
+```
 ├── app.py
 ├── app_test.py
 ├── classifier.pkl
@@ -31,3 +31,4 @@ For training, the user can choose to either do hyperparameter optimization or no
 ├── README.md
 ├── requirements.txt
 └── streamlit-ui.py
+```
