@@ -19,6 +19,10 @@ For training, the user can choose to either do hyperparameter optimization or no
 ├── app_test.py
 ├── classifier.pkl
 ├── data
+│   ├── Adelie.jpg
+│   ├── Chinstrap.jpg
+│   ├── Gentoo.jpg
+│   ├── penguins_size_cleaned.csv
 │   ├── penguins_size.csv
 │   └── penguins_size_update.csv
 ├── Makefile
@@ -31,4 +35,5 @@ For training, the user can choose to either do hyperparameter optimization or no
 ├── README.md
 ├── requirements.txt
 └── streamlit-ui.py
+
 ```
