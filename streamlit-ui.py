@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from mylib import model_train
 from mylib import util
 
-st.title("Inference and Traning of Penguin Classifier.")
+st.title("Inference and Training of Penguin Classifier.")
 mode = ["inference", "training"]
 
 st.sidebar.header("Application Mode.")
@@ -20,10 +20,10 @@ if mode_choice == "inference":
     with open("classifier.pkl", "rb") as f:
         classifier = pickle.load(f)
 
-    culmen_length_mm = st.number_input("culmen length (mm)", value=1.0)
-    culmen_depth_mm = st.number_input("culmen depth (mm)", value=1.0)
-    flipper_length_mm = st.number_input("flipper length (mm)", value=1.0)
-    body_mass_g = st.number_input("body mass (g)", value=1.0)
+    culmen_length_mm = st.number_input("culmen length (mm)", value=50.0)
+    culmen_depth_mm = st.number_input("culmen depth (mm)", value=19.0)
+    flipper_length_mm = st.number_input("flipper length (mm)", value=215.0)
+    body_mass_g = st.number_input("body mass (g)", value=4850)
 
     if st.button("Inference"):
         new_row = [[culmen_length_mm, 
@@ -32,7 +32,7 @@ if mode_choice == "inference":
                     body_mass_g]]
 
         result = classifier.predict(new_row)
-        st.write(f"Predicted Penguin Species: {result[0]}")
+        st.header(f"Predicted Penguin Species: {result[0]}")
         # Plot
         df, X, y = util.data_pipeline("data/penguins_size_cleaned.csv")
         #label_choice_1 = st.selectbox("Characteristic 1", X.columns)
@@ -45,6 +45,10 @@ if mode_choice == "inference":
                     body_mass_g]
         fig = util.visual_plot(df, X, y, new_sample, label_choice_1, label_choice_2)
         st.sidebar.pyplot(fig)
+        image_path = "data/"+result[0]+".jpg"
+        image = util.show_image(image_path)
+        st.sidebar.header("Your Penguin (\")>")
+        st.sidebar.image(image, caption='Does this not look like your penguin? Update our model and choose "Train".')
 else:
     st.header("Training")
     st.write(
@@ -59,6 +63,10 @@ else:
     st.sidebar.header("Training parameters")
     model_choice = st.sidebar.selectbox("Model", ["Random Forest Classifier"])
     hyper_tuning_choice = st.sidebar.selectbox("Hyper parameter tuning?", [True, False])
+
+    image_path = "data/"+Species+".jpg"
+    image = util.show_image(image_path)
+    st.sidebar.image(image, caption='Is this the Species you had in mind?')
 
     if st.button("Train"):
         with st.spinner("Training the model..."):

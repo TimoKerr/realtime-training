@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+from PIL import Image
+
 def data_pipeline(file_path):
     df = pd.read_csv(file_path)
     df = df.dropna()
@@ -61,4 +63,7 @@ def visual_plot(df, X, y, new_row, label_1, label_2):
     plt.show()
     return fig
 
+def show_image(image_path):
+    image = Image.open(image_path)
+    return image
 
