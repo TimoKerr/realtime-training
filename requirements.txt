@@ -1,10 +1,10 @@
 hyperopt
 scikit-optimize
 pylint
+matplotlib
 numpy
 pandas
 streamlit
 pytest
 pytest-cov
 black
-matplotlib

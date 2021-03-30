@@ -1,5 +1,6 @@
 from mylib import model_train
 import pickle
+from mylib import util
 
 
 def test_inference():
@@ -10,6 +11,7 @@ def test_inference():
 
 
 def test_train():
-    classifier, score = model_train.train("data/penguins_size.csv", True, max_evals=2)
+    _, X, y = util.data_pipeline("data/penguins_size.csv")
+    classifier, score = model_train.train(X, y, True, max_evals=2)
     print(score)
     return classifier, score
