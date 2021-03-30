@@ -7,18 +7,12 @@ from mylib import util
 from mylib import hyperoptimize
 
 
-def train(data_path="data/penguins_size.csv", hyperOpt=bool, max_evals=5):
-    """First loads data from data_path, then cleans data, makes x,y and splits.
-    The depending on input, hyper parameter optimization will be performed.
+def train(X, y, hyperOpt=bool, max_evals=5):
+    """The depending on input, hyper parameter optimization will be performed.
     Returns model"""
 
-    df = util.read_data(data_path)
-    df = util.clean_data(df)
-    df.to_csv("data/penguins_size_cleaned.csv", index=False)
-    X, Y = util.create_xy(df)
-
     X_train, X_test, Y_train, Y_test = train_test_split(
-        X, Y, test_size=0.2, random_state=0
+        X, y, test_size=0.2, random_state=0
     )
 
     if hyperOpt == True:

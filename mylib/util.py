@@ -1,13 +1,11 @@
 """Simle util function as test"""
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-
-def read_data(file_path):
+def data_pipeline(file_path):
     df = pd.read_csv(file_path)
-    return df
-
-
-def clean_data(df):
+    df = df.dropna()
     df = df[
         [
             "species",
@@ -17,29 +15,50 @@ def clean_data(df):
             "body_mass_g",
         ]
     ]
-    df = df.dropna()
-    return df
 
-
-def create_xy(df):
     X = df.iloc[:, 1:]
-    Y = df.iloc[:, 0]
-    return X, Y
+    y = df.iloc[:, 0]
+
+    df.to_csv("data/penguins_size_cleaned.csv", index=False)
+
+    return df, X, y
 
 
-def add(new_row):
-    df = pd.read_csv("data/penguins_size.csv")
-    df = clean_data(df)
-
-    df = df.append(
+def add(file_path, new_row):
+    ''' Assumes new row cols map to old_df cols'''
+    
+    df_old = pd.read_csv(file_path)
+    df = df_old.append(
         {
-            df.columns[0]: new_row[0],
-            df.columns[1]: new_row[1],
-            df.columns[2]: new_row[2],
-            df.columns[3]: new_row[3],
-            df.columns[4]: new_row[4],
+            df_old.columns[0]: new_row[0],
+            df_old.columns[1]: new_row[1],
+            df_old.columns[2]: new_row[2],
+            df_old.columns[3]: new_row[3],
+            df_old.columns[4]: new_row[4],
         },
         ignore_index=True,
     )
 
     df.to_csv("data/penguins_size_update.csv", index=False)
+
+
+def visual_plot(df, X, y, new_row, label_1, label_2):
+    
+    x_1 = X[label_1]
+    x_2 = X[label_2]
+
+
+
+    x_1_new = new_row[X.columns.get_loc(label_1)]
+    x_2_new = new_row[X.columns.get_loc(label_2)]
+
+    fig = plt.figure()
+    plt.scatter(x_1, x_2, c=pd.Categorical(y).codes, alpha = 0.4)
+    plt.scatter(x_1_new, x_2_new, c="red")
+    plt.xlabel(label_1)
+    plt.ylabel(label_2)
+    plt.title("Where is the sample situated?")
+    plt.show()
+    return fig
+
+
