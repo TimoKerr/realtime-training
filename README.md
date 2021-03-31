@@ -4,7 +4,11 @@
 https://share.streamlit.io/timokerr/realtime-training/main/streamlit-ui.py
 
 # Real Time Training
-This project investigates the possibilities of small-scale real-time model training and serving. Initially only with a Streamlit front-end, but will later add FastAPI backend.
+This project looks at Streamlit as a framework to experiment with Proof Of Concept (PoC) Machine Learning Applications. For now, only Streamlit is used for the full functionality (backend and frontend). However, it is possible to use Streamlit as frontend only, and implement the backend in FastAPI (This will be added later on).  
+
+The application itself incorporates both inference (prediction) and training of a classification model to classify Penguin Species. Given input features (measures of the penguin such as flipper size), the model outputs one of three different species. The underlying classifier is a Random Forest Classifier.  
+
+Feedback and real-time training: Together with the predicted species, the application shows a picture of a penguin belonging to the predicted species. This serves as a check, and if the used notices that the model made the wrong prediction, he or she can use the *training* functionality to use their sample as a new training sample, update the dataset and re-train the model. The re-training can be chosen to be with or without hyperparameter optimization.  
 
 # Virtual Environment
 ```python3 -m venv ~/.realtime-training```  
